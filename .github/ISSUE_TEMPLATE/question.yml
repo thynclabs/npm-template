@@ -15,7 +15,7 @@ body:
         - Remember to include sufficient details and context.
         - If you have multiple questions please submit them separately so we can track resolution.
         - Screenshots are always helpful (just paste any images right here in the question)
-        - If you're trying to start a conversation on a topic, consider using [Discussions](https://github.com/thynclabs/{repository}/discussions). We want to close every issue as quickly as possible, but discussions are intended for longer conversations.
+        - If you're trying to start a conversation on a topic, consider using [Discussions](https://github.com/thynclabs/npm-template/discussions). We want to close every issue as quickly as possible, but discussions are intended for longer conversations.
 
   - type: input
     id: function

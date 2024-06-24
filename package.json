@@ -3,14 +3,14 @@
   "version": "1.0.0",
   "description": "npm package description",
   "main": "./dist/index.js",
-  "repository": "git@github.com:thynclabs/{repository}.git",
+  "repository": "git@github.com:thynclabs/npm-template.git",
   "author": "Thync Labs",
   "license": "MIT",
   "private": false,
   "bugs": {
-    "url": "https://github.com/thynclabs/{repository}/issues"
+    "url": "https://github.com/thynclabs/npm-template/issues"
   },
-  "homepage": "https://github.com/thynclabs/{repository}/blob/main/README.md",
+  "homepage": "https://github.com/thynclabs/npm-template/blob/main/README.md",
   "engines": {
     "node": ">=18.0.0"
   },
