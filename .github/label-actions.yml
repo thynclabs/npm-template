@@ -24,7 +24,7 @@ wontfix:
   issues:
     # Reopen the issue
     close: true
-    close-reason: won't fix
+    close-reason: not_planned
 # The `wontfix` label is removed from issues
 -wontfix:
   issues:
