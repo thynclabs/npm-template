@@ -19,6 +19,12 @@ heated:
   # Unlock the thread
   unlock: true
 
+# The `wontfix` label is added into issues
+wontfix:
+  issues:
+    # Reopen the issue
+    close: true
+    close-reason: won't fix
 # The `wontfix` label is removed from issues
 -wontfix:
   issues:
