@@ -10,10 +10,18 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Test
-        uses: thynclabs/template-transformer-and-cleanup@0.0.13
-        with:
-          text: script
+      - name: Set up Git
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
 
-      - name: Print repository created message
-        run: echo "A new repository has been created and initialized!"
+      - name: Make changes to repository
+        run: |
+          echo "Update some files" >> example.txt
+          git add example.txt
+          git commit -m "Update example.txt"
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
