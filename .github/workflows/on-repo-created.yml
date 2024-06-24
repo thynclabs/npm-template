@@ -1,0 +1,16 @@
+name: On Repository Created
+
+on:
+  repository_dispatch:
+    types: [repository_created]
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Print repository created message
+        run: echo "A new repository has been created and initialized!"
