@@ -11,9 +11,9 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Test
-        uses: thynclabs/template-transformer-and-cleanup@v0.0.4
+        uses: thynclabs/template-transformer-and-cleanup@v0.0.6
         with:
-          text-to-replace: 'npm-template'
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Print repository created message
         run: echo "A new repository has been created and initialized!"
