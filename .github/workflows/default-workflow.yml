@@ -5,10 +5,14 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.PAT_WITH_WORKFLOW }}
 
       - name: Set up Git
         run: |
@@ -17,12 +21,17 @@ jobs:
 
       - name: Make changes to repository
         run: |
+          export LANG=C.UTF-8
+          echo {{github.repository}}
+          find . -type f -exec sed -i "s/npm-template/${{ github.repository }}/g" {} +
           echo "Update some files" >> example.txt
-          git add example.txt
+          rm -rf .github/workflows/default-workflow.yml
+          git add .
           git commit -m "Update example.txt"
 
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.PAT_WITH_WORKFLOW }}
           branch: ${{ github.ref }}
+          force: true
