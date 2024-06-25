@@ -22,8 +22,8 @@ jobs:
       - name: Make changes to repository
         run: |
           export LANG=C.UTF-8
-          echo {{github.repository}}
-          find . -type f -exec sed -i "s/npm-template/${{ github.repository }}/g" {} +
+          REPO_NAME=$(basename "$(git remote get-url origin)" .git)
+          find . -type f -exec sed -i "s/npm-template/${REPO_NAME//\//\\/}/g" {} +
           echo "Update some files" >> example.txt
           rm -rf .github/workflows/default-workflow.yml
           git add .
