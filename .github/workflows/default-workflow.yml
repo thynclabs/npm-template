@@ -5,15 +5,32 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-
-      - name: Test
-        uses: thynclabs/template-transformer-and-cleanup@v0.0.4
         with:
-          text-to-replace: 'npm-template'
+          token: ${{ secrets.PAT_WITH_WORKFLOW }}
 
-      - name: Print repository created message
-        run: echo "A new repository has been created and initialized!"
+      - name: Set up Git
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
+
+      - name: Make changes to repository
+        run: |
+          export LANG=C.UTF-8
+          REPO_NAME=$(basename "$(git remote get-url origin)" .git)
+          find . -type f -exec sed -i "s/npm-template/${REPO_NAME//\//\\/}/g" {} +
+          rm -rf .github/workflows/default-workflow.yml
+          git add .
+          git commit -m "Update example.txt"
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.PAT_WITH_WORKFLOW }}
+          branch: ${{ github.ref }}
+          force: true

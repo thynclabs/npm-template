@@ -1,5 +1,5 @@
 {
-  "name": "@thynclabs/npm-package",
+  "name": "@thynclabs/npm-template",
   "version": "1.0.0",
   "description": "npm package description",
   "main": "./dist/index.js",
