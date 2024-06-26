@@ -14,23 +14,12 @@ jobs:
         with:
           token: ${{ secrets.WORKFLOW_TOKEN }}
 
-      - name: Set up Git
-        run: |
-          git config --local user.email "actions@github.com"
-          git config --local user.name "GitHub Actions"
-
-      - name: Make changes to repository
-        run: |
-          export LANG=C.UTF-8
-          REPO_NAME=$(basename "$(git remote get-url origin)" .git)
-          find . -type f -exec sed -i "s/npm-template/${REPO_NAME//\//\\/}/g" {} +
-          rm -rf .github/workflows/default-workflow.yml
-          git add .
-          git commit -m "Update example.txt"
-
-      - name: Push changes
-        uses: ad-m/github-push-action@master
+      - name: Template Cleanup Action
+        uses: thynclabs/template-transformer-and-cleanup@1.0.1
         with:
-          github_token: ${{ secrets.WORKFLOW_TOKEN }}
+          search-keyword: 'thynclabs/npm-template'
+          replace-keyword: ${{ github.repository }}
+          github_url: ${{ github.server_url }}
+          workflow_token: ${{ secrets.WORKFLOW_TOKEN }}
+          repository: ${{ github.repository }}
           branch: ${{ github.ref }}
-          force: true
