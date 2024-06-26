@@ -16,4 +16,4 @@ yarn add @thynclabs/npm-template
 Contributions are welcome! If you encounter any issues or have suggestions for improvements, please open an issue on GitHub. To contribute code, fork the repository and submit a pull request.
 
 ## Credits
-Universal Auth is maintained by Thync Labs. Special thanks to contributors for their valuable input and contributions.
+@thynclabs/npm-template is maintained by Thync Labs. Special thanks to contributors for their valuable input and contributions.
