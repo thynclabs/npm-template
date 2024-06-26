@@ -15,7 +15,7 @@ jobs:
           token: ${{ secrets.WORKFLOW_TOKEN }}
 
       - name: Template Cleanup Action
-        uses: thynclabs/template-transformer-and-cleanup@1.0.3
+        uses: thynclabs/template-transformer-and-cleanup@1.0.4
         with:
           search_keyword: 'thynclabs/npm-template'
           replace_keyword: ${{ github.repository }}
